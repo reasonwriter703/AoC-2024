@@ -6,7 +6,6 @@ if len(sys.argv) > 1: working = sys.argv[1]
 os.chdir( working )
 start_time = time.time()
 
-import re
 result = 0
 list_x = []
 list_y = []
