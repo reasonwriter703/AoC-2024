@@ -19,9 +19,20 @@ os.chdir( working )
 start_time = time.time()
 
 result = 0
+             
+# Option 1 - Reads the input file 1 row at a time
 ''')
     fp.write("for row in open('Day" + str(i) + "-demo.txt', 'r'):\n")
     fp.write('''    a, b = row.split()
 
+# Option 2 - Converts the input into a 2D array
+''')
+    fp.write("with open('Day" + str(i) + "-demo.txt', 'r') as file:\n")
+    fp.write('''    array = [list(line.strip()) for line in file]
+
+for row, line in enumerate(array):
+    for col, char in enumerate(line):
+
+             
 print('RESULT: ', result)
 print('Time taken:', time.time() - start_time)''')
