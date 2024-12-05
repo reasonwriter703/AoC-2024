@@ -1,0 +1,60 @@
+import sys
+import os
+import time
+working= os.environ.get("WORKING_DIRECTORY",os.path.dirname(sys.argv[0]) + "/inputs")
+if len(sys.argv) > 1: working = sys.argv[1]
+os.chdir( working )
+start_time = time.time()
+result = 0
+
+pairs = []
+updates = []
+with open('Day5-input.txt', 'r') as file:
+    firsthalf = True
+    for line in file:
+        if line == '\n':
+            firsthalf = False
+        elif firsthalf:
+            pairs.append([int(i) for i in line.strip().split('|')])
+        else:
+            updates.append([int(i) for i in line.strip().split(',')])
+
+for u, upd in enumerate(updates):
+    is_valid = True
+    for i, n in enumerate(upd):
+        for pair in pairs:
+            if n == pair[1]:
+                j = i
+                while True:
+                    j += 1
+                    try:
+                        if upd[j] == pair[0]: 
+                            is_valid = False
+                            break
+                    except IndexError:
+                        break
+    if is_valid: updates[u] = [0]
+
+for upd in updates:
+    if upd == [0]: continue
+    corrections = 1
+    last_corrections = 0
+    while corrections != last_corrections:  #loop until no new corrections are made
+        last_corrections = corrections
+        for i, n in enumerate(upd):
+            for pair in pairs:
+                if n == pair[1]:
+                    j = i
+                    while True:
+                        j += 1
+                        try:
+                            if upd[j] == pair[0]:
+                                upd[i], upd[j] = upd[j], upd[i]
+                                corrections += 1
+                        except IndexError:
+                            break
+    print(upd, f"with {corrections} corrections")
+    result += upd[int(len(upd)/2)]
+
+print('RESULT: ', result)
+print('Time taken:', time.time() - start_time)
