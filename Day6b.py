@@ -1,50 +1,49 @@
-import sys
-import os
+import util
 import time
 import numpy as np
-working= os.environ.get("WORKING_DIRECTORY",os.path.dirname(sys.argv[0]) + "/inputs")
-if len(sys.argv) > 1: working = sys.argv[1]
-os.chdir( working )
+util.set_dir("inputs")
 start_time = time.time()
 result = 0
 
+def patrol(area, check_if_stuck=False):
+    coord_guard = guard_start
+    facing = 0  #north
+    last_patrolled = 0
+    while True:
+        coord_next = util.move(coord_guard, util.compass[facing])
+        if util.out_of_bounds(area, coord_next): 
+            break
+        elif area[coord_next] != '#': #walk
+            coord_guard = coord_next
+            area[coord_guard] = '^'
+
+        else: #turn_r
+            facing = 0 if facing == 3 else facing + 1
+            if check_if_stuck and (facing == 0): 
+                patrolled = (area == '^').sum()
+                if last_patrolled == patrolled:
+                    #guard is stuck!
+                    obstruction[row][col] = True
+                    print(row, col, 'True')
+                    break
+                last_patrolled = patrolled
+    return area
 
 # Convert the input into a 2D array
 with open('Day6-input.txt', 'r') as file:
     area = np.array([list(line.strip()) for line in file])
-obstruction = (area == 'n/a')
-compass = {0:'N', 1:'E', 2:'S', 3:'W'}
-facing = 0
+guard_start = np.where(area == '^')
 
+true_area = patrol(area.copy())      #original timeline
+
+obstruction = (area == 'n/a')
 for row, line in enumerate(area):
     for col, char in enumerate(line):
+        if true_area[row][col] != '^': continue     #if obstruction doesn't touch guard's original patrol, ignore
         if char != '.': continue
-        new_area = area.copy()
+        new_area = area.copy()      #new timeline
         new_area[row][col] = '#'    #place obstruction
-        visited = (area == '^') #reset bool mask
-
-        last_patrolled = 0
-        while True:
-            guard = np.where(new_area == '^')
-            visited[guard] = True
-            up = int(guard[0]-1), guard[1]
-            if int(up[0]) < 0:
-                break
-            if new_area[up] == '.': #walk
-                new_area[guard], new_area[up] = new_area[up], new_area[guard]
-                
-                
-            else: #turn
-                new_area = np.rot90(new_area)
-                visited = np.rot90(visited)
-                facing = 0 if facing == 3 else facing + 1
-                if facing == 0: 
-                    if last_patrolled == visited.sum():
-                        #guard is stuck!
-                        obstruction[row][col] = True
-                        print(row, col, 'True')
-                        break
-                    last_patrolled = visited.sum()
+        patrol(new_area, True)
 
 print('RESULT: ', obstruction.sum())
 print('Time taken:', time.time() - start_time)
