@@ -1,12 +1,9 @@
-import sys
-import os
+import util
 import time
-working= os.environ.get("WORKING_DIRECTORY",os.path.dirname(sys.argv[0]) + "/inputs")
-if len(sys.argv) > 1: working = sys.argv[1]
-os.chdir( working )
+util.set_dir("inputs")
 start_time = time.time()
-
 result = 0
+
 list_x = []
 list_y = []
 for row in open('Day1-input.txt', 'r'):
