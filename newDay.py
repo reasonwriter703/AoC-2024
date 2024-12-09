@@ -1,14 +1,10 @@
-import util
-util.set_dir("inputs")
-
 i = input('Day#?')
 with open('inputs/Day' + i + '-demo.txt', 'w') as fp:
     pass
 with open('inputs/Day' + i + '-input.txt', 'w') as fp:
     pass
 with open('Day' + i + 'a.py', 'w') as fp:
-    fp.write('''import sys
-import util
+    fp.write('''import util
 import time
 import numpy as np
 util.set_dir("inputs")
