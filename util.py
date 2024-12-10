@@ -5,7 +5,8 @@ def set_dir(subfolderpath):
     if len(sys.argv) > 1: working = sys.argv[1]
     os.chdir( working )
 
-compass = [(-1,0), (0,1), (1,0), (0,-1)]    #NESW
+compass = [(-1,0), (0,1), (1,0), (0,-1)]    #N, E, S, W
+compass8 = [(-1,0), (-1,1), (0,1), (1,1), (1,0), (1,-1), (0,-1), (-1,-1)]    #N, NE, E, SE, S, SW, W, NW
 def move_coords(this_tpl, new_tpl, steps=1):
     if steps != 1:
         x_tpl = tuple(i * steps for i in new_tpl)
