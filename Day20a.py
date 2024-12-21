@@ -5,6 +5,7 @@ from collections import deque
 util.set_dir("inputs")
 start_time = time.time()
 
+#Day6b solution also works for Day20a. Will probably need to refactor for part 2.
 def runmaze(area):
     queue = deque([(start_r, start_c)])
     while queue:
