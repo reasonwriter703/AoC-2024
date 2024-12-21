@@ -28,5 +28,10 @@ def out_of_bounds(area, coord):
     try:
         xy = area[coord]
         return False
+    except TypeError:
+        try:
+            xy = area[coord[0]][coord[1]]
+        except IndexError:
+            return True
     except IndexError:
         return True

@@ -10,7 +10,7 @@ def patrol(area, check_if_stuck=False):
     facing = 0  #north
     last_patrolled = 0
     while True:
-        coord_next = util.move(coord_guard, util.compass[facing])
+        coord_next = util.move_coords(coord_guard, util.compass[facing])
         if util.out_of_bounds(area, coord_next): 
             break
         elif area[coord_next] != '#': #walk
