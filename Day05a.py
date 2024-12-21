@@ -6,7 +6,7 @@ result = 0
 
 pairs = []
 updates = []
-with open('Day5-input.txt', 'r') as file:
+with open('Day05-input.txt', 'r') as file:
     firsthalf = True
     for line in file:
         if line == '\n':

@@ -21,7 +21,7 @@ def make_the_math_math(nums, opers, running_total=0):
         return running_total
 
 # Read the input file 1 row at a time
-with open('Day7-input.txt', 'r') as file:
+with open('Day07-input.txt', 'r') as file:
     for line in file:
         total, numbers = line.strip().split(':')
         total = int(total)

@@ -30,7 +30,7 @@ def patrol(area, check_if_stuck=False):
     return area
 
 # Convert the input into a 2D array
-with open('Day6-input.txt', 'r') as file:
+with open('Day06-input.txt', 'r') as file:
     area = np.array([list(line.strip()) for line in file])
 guard_start = np.where(area == '^')
 

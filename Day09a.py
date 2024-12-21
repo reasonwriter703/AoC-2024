@@ -6,7 +6,7 @@ result = 0
 disk_map = []
 
 # Read the input file 1 row at a time
-for row in open('Day9-input.txt', 'r'):
+for row in open('Day09-input.txt', 'r'):
     for i, char in enumerate(row):
         char = int(char)
         fileID = int(i/2)

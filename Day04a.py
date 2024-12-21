@@ -30,7 +30,7 @@ def word_search(r, c, x, y, subword):
         return
 
 # Read the text file and convert it into a 2D array
-with open('Day4-input.txt', 'r') as file:
+with open('Day04-input.txt', 'r') as file:
     array = [list(line.strip()) for line in file]
 
 for row, line in enumerate(array):

@@ -6,7 +6,7 @@ start_time = time.time()
 result = 0
 
 # Convert the input into a 2D array
-with open('Day7-input.txt', 'r') as file:
+with open('Day07-input.txt', 'r') as file:
     for line in file:
         total, numbers = line.strip().split(':')
         total = int(total)

@@ -6,7 +6,7 @@ start_time = time.time()
 result = 0
 
 # Convert the input into a numpy array
-with open('Day8-input.txt', 'r') as file:
+with open('Day08-input.txt', 'r') as file:
     area = np.array([list(line.strip()) for line in file])
 antinodes = (area == '#')    #boolean mask
 

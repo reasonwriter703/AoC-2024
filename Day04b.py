@@ -5,7 +5,7 @@ start_time = time.time()
 result = 0
 
 # Read the text file and convert it into a 2D array
-with open('Day4-input.txt', 'r') as file:
+with open('Day04-input.txt', 'r') as file:
     array = [list(line.strip()) for line in file]
 
 for row, line in enumerate(array):

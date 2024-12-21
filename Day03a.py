@@ -17,7 +17,7 @@ def findnum(input, delim):
             break
     return 0 if i == -1 else int(input[0:i])
 
-for row in open('Day3-input.txt', 'r'):
+for row in open('Day03-input.txt', 'r'):
     for i, char in enumerate(row):
         if i < 4: continue
         if row[i-4:i] == 'mul(':

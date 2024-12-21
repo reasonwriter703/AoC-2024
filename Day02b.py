@@ -15,7 +15,7 @@ def is_safe(rpt):
             return False
     return True
 
-for row in open('Day2-input.txt', 'r'):
+for row in open('Day02-input.txt', 'r'):
     row_i += 1
     report = row.strip().split(' ')
     report = [int(x) for x in report]

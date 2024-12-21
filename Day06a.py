@@ -6,7 +6,7 @@ start_time = time.time()
 result = 0
 
 # Convert the input into a 2D array
-with open('Day6-input.txt', 'r') as file:
+with open('Day06-input.txt', 'r') as file:
     area = np.array([list(line.strip()) for line in file])
 visited = (area == '^') #create bool mask
 

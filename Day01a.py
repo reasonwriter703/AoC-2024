@@ -6,7 +6,7 @@ result = 0
 
 list_x = []
 list_y = []
-for row in open('Day1-input.txt', 'r'):
+for row in open('Day01-input.txt', 'r'):
     x, y = row.strip().split('   ')
     list_x.append(int(x))
     list_y.append(int(y))

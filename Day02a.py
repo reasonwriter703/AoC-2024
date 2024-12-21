@@ -5,7 +5,7 @@ start_time = time.time()
 result = 0
 
 row_i = 0
-for row in open('Day2-input.txt', 'r'):
+for row in open('Day02-input.txt', 'r'):
     row_i += 1
     report = row.strip().split(' ')
     report = [int(x) for x in report]
