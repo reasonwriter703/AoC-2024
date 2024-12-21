@@ -3,6 +3,7 @@ import time
 from collections import deque
 util.set_dir("inputs")
 start_time = time.time()
+phase_max = 20   #2 for part 1, 20 for part 2
 
 def runmaze(area, start):
     queue = deque([start])
@@ -52,8 +53,7 @@ honest_runtime = len(honest_path) - 1
 cheats = {}
 for i, phase_in in enumerate(honest_path):
     # print(len(honest_path) - i)
-
-    phase_max = 20
+    
     #get map of phase range
     for offset_r in range(-phase_max, phase_max + 1):
         for offset_c in range(-phase_max, phase_max + 1):
